@@ -6,6 +6,12 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## [0.4.7] - 2026-10-04
+
+### Added
+
+- The Harness functional role (Rule #2610042002, the asset AGENTS-STANDARD-HARNESS.md): when the agent platform spawns another agent, it must create AGENTS.md in the spawned agent's context - the BASE composed per Rule #2609271528, fetched from the asset; the spawned agent starts from the clean base and composes role inclusions on demand;
+
 ## [0.4.6] - 2026-10-03
 
 ### Added
