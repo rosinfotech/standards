@@ -6,6 +6,12 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## [0.4.8] - 2026-10-05
+
+### Added
+
+- The paid services norm (Rule #2610051637, the Harness role): before every paid action - via an API or MCP - the agent reports the current balance and the predicted charge; the report is always shown, an approval (action / task / day / full) suppresses only the request, never the report;
+
 ## [0.4.7] - 2026-10-04
 
 ### Added

@@ -177,6 +177,7 @@
 - [Rule #2610031649 - Technical Writer AGENTS.md: Progressive Disclosure and References](/standards/ai-standard/rule-2610031649.md)
 - [Rule #2610031651 - Researcher AGENTS.md: Interactive Exploration](/standards/ai-standard/rule-2610031651.md)
 - [Rule #2610042002 - Harness AGENTS.md: Spawned Agent Context](/standards/ai-standard/rule-2610042002.md)
+- [Rule #2610051637 - Paid Services: Balance Report and Approvals](/standards/ai-standard/rule-2610051637.md)
 - [Rule #2609271530 - Architect AGENTS.md: Whole Projects and Microservices](/standards/ai-standard/rule-2609271530.md)
 - [Rule #2609271532 - Backend Engineer AGENTS.md: Go](/standards/ai-standard/rule-2609271532.md)
 - [Rule #2609271534 - Backend Engineer AGENTS.md: Java](/standards/ai-standard/rule-2609271534.md)
