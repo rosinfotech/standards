@@ -6,6 +6,12 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## [0.4.9] - 2026-10-05
+
+### Added
+
+- The self-criticism norm, split by domain: Code (Rule #2610051814 - verified results, the checks, the evidence) and Art (Rule #2610051955 - creative work without a test suite: the brief self-review, the craft basics, the drafts for the owner's review, the variants with the recommendation); the BASE core gains the seventh section covering both domains - the confidence is born only from a result confirmed by the owner;
+
 ## [0.4.8] - 2026-10-05
 
 ### Added

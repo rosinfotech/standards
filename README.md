@@ -173,6 +173,8 @@
 - [Rule #2610031427 - AGENTS.md Inclusions: Role Assets from the Standards Repository](/standards/ai-standard/rule-2610031427.md)
 - [Rule #2610031855 - New Project: Ask for the Workspace](/standards/ai-standard/rule-2610031855.md)
 - [Rule #2610031908 - Agent Scripts: .agents Directory and Node.js](/standards/ai-standard/rule-2610031908.md)
+- [Rule #2610051814 - Self-Criticism: Code - Verified Results](/standards/ai-standard/rule-2610051814.md)
+- [Rule #2610051955 - Self-Criticism: Art - Drafts for the Owner's Review](/standards/ai-standard/rule-2610051955.md)
 - [Rule #2610031647 - Git Manager AGENTS.md: Commits and Repository Initialization](/standards/ai-standard/rule-2610031647.md)
 - [Rule #2610031649 - Technical Writer AGENTS.md: Progressive Disclosure and References](/standards/ai-standard/rule-2610031649.md)
 - [Rule #2610031651 - Researcher AGENTS.md: Interactive Exploration](/standards/ai-standard/rule-2610031651.md)

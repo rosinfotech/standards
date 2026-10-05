@@ -9,7 +9,7 @@
 - Whenever I create another agent, I must create AGENTS.md in its context.
 - The content is the BASE AGENTS.md - the behavioral core:
   - fetch the current version: `https://raw.githubusercontent.com/rosinfotech/standards/master/standards/ai-standard/assets/AGENTS-STANDARD-BASE.md`;
-  - the core consists of six sections: AGENTS.md inclusions; AGENTS.md self-update; New project - ask for the workspace; Agent scripts - `.agents` and Node.js; Sensitive information; Git - the absolute prohibition.
+  - the core consists of seven sections: AGENTS.md inclusions; AGENTS.md self-update; New project - ask for the workspace; Agent scripts - `.agents` and Node.js; Self-criticism - verified results and demonstration; Sensitive information; Git - the absolute prohibition.
 - The spawned agent starts from the clean base - role inclusions are not inherited automatically: the spawned agent composes them on demand (the inclusions section of the base).
 - No spawned agent runs without AGENTS.md in its context.
 
@@ -25,4 +25,3 @@
   - until the end of the current day;
   - full - approve all the further paid actions, no more requests.
 - An approved scope suppresses only the approval request - never the balance report.
-
