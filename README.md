@@ -249,3 +249,4 @@
 - [Rule #2609271538 - Frontend Engineer AGENTS.md: TypeScript + React](/standards/ai-standard/rule-2609271538.md);
 - [Rule #2610081414 - CLI Engineer AGENTS.md: Command-Line Development](/standards/ai-standard/rule-2610081414.md);
 - [Rule #2610081416 - CLI Output Contract: Binding Any Role to the Output CLI Standard](/standards/ai-standard/rule-2610081416.md);
+- [Rule #2610082250 - Git Flow Expert AGENTS.md: Branching Model Stewardship](/standards/ai-standard/rule-2610082250.md);

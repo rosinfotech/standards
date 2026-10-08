@@ -12,6 +12,12 @@
 
 - The Git Flow Standard (9 rules, `standards/git-flow-standard/`): the ladder of five named variants - Trunk-Based Development, GitHub Flow, Git Flow Lite, GitLab Flow Lite, Git Flow - picked by two questions: how many people and how many gates stand between a commit and production; the common invariants: the fork point equals the merge-request target (gated dirt of staging / release/x.y is a legal fork base, ungated dirt of dev is the only forbidden one), the one-way task flow with dev as a dead-end integration sink, the sync discipline (main -> dev after every promotion), and the hotfix contract - delivery via main bypassing the queue, propagation by back-merge into staging / release/x.y and dev; every variant rule carries its mermaid scheme, the environment mapping (dev / stage / prod), the hotfix behavior and the listed deviations from the canon; the README index links the standard's nine rules after The Git Code Project Standard;
 
+## [0.5.1] - 2026-10-08
+
+### Added
+
+- The Git Flow Expert role (Rule #2610082250, the asset AGENTS-STANDARD-GIT-FLOW-EXPERT.md - isolated and self-contained, the norms inlined as plain text): the branching-model stewardship split from the git operations stewardship of the Git Manager - the ladder of five variants, the fork-point invariant with the gated / ungated dirt classification, the one-way flow with the sync discipline, the hotfix contract and the per-variant contracts live in one role asset; the rule maps every asset section to the Git Flow Standard rules, and the README index links it in the AGENTS.md subsection;
+
 ## [0.4.10] - 2026-10-08
 
 ### Added
