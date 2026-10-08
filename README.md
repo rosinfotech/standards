@@ -153,7 +153,7 @@
 
 - [Rule #2610072040 - Headers: Marker Levels, Blue and White](/standards/output-cli-standard/rule-2610072040.md);
 - [Rule #2610072042 - Lists: Dash Bullet, 4-Space Step, Terminators](/standards/output-cli-standard/rule-2610072042.md);
-- [Rule #2610072044 - Blank Lines: Block Discipline and TTY Frame](/standards/output-cli-standard/rule-2610072044.md);
+- [Rule #2610072044 - Blank Lines: Paragraph and Block Discipline, TTY Frame](/standards/output-cli-standard/rule-2610072044.md);
 - [Rule #2610072046 - Line Width: 100 with Hanging Wrap](/standards/output-cli-standard/rule-2610072046.md);
 
 ### Messages

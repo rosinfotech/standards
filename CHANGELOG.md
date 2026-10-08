@@ -6,6 +6,12 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## [0.5.2] - 2026-10-08
+
+### Changed
+
+- The blank-line discipline of the Output CLI Standard (Rule #2610072044): exactly one blank line after every paragraph and after every message line or block (Error / Warning / Success / Information) before any following content; the guarantee against two or more consecutive blank lines now covers the whole own output; the relay exception formalized - a retransmitted utility output (df, systemctl, docker ...) passes through as-is and is framed by exactly one blank line before and after it; the message rule (Rule #2610072048) cross-references the discipline; the demo asset gains the maintenance scenario (a server report with a warning-disclosed list and a relayed df -h block); the CLI Engineer asset syncs the inlined norm;
+
 ## [0.5.0] - 2026-10-08
 
 ### Added

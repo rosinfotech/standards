@@ -66,6 +66,24 @@ async function doctor() {
     return 0;
 }
 
+async function maintenance() {
+    const out = painter(process.stdout);
+    const err = painter(process.stderr);
+    process.stdout.write(`${out.bold(out.blue("== Server: hissing-gray =="))}\n\n`);
+    process.stdout.write("OS: ubuntu (settings.os) -> family: debian\n\n");
+    process.stderr.write(`${err.yellow(err.bold("Warning:"))} ${err.yellow("pending updates: 2 (security: 1):")}\n\n`);
+    process.stdout.write("    - docker-buildx-plugin/resolute 0.38.0-1~ubuntu.26.04 amd64;\n");
+    process.stdout.write("    - libpng16-16t64/resolute 1.6.57-1ubuntu0.1 amd64;\n");
+    process.stdout.write("    - openssh-client/resolute 1:10.2p1-2ubuntu3.7 amd64;\n\n");
+    process.stdout.write(`${out.bold(out.blue("== Disk usage (df -h) =="))}\n\n`);
+    process.stdout.write("Filesystem      Size  Used Avail Use% Mounted on\n");
+    process.stdout.write("tmpfs           1.6G  1.2M  1.6G   1% /run\n");
+    process.stdout.write("/dev/vda2       118G   11G  102G  10% /\n\n");
+    process.stderr.write(`${err.cyan(err.bold("Information:"))} ${err.cyan("the df -h block above is the relayed utility output - passed through as-is")}\n\n`);
+    process.stderr.write(`${err.green(err.bold("Success:"))} ${err.green("maintenance report generated in 3.1s")}\n`);
+    return 0;
+}
+
 async function json() {
     const out = painter(process.stdout);
     const payload = { items: [{ name: "src", status: "ok" }, { name: "docs", status: "skipped" }] };
@@ -193,6 +211,7 @@ const scenarios = {
     doctor,
     json,
     list,
+    maintenance,
     progress,
     prompt,
     report,

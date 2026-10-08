@@ -40,7 +40,7 @@
 
 - Headers stand at column 0; the level is chosen by the weight of the section - starting from level 1 is not required; exactly one blank line follows every header; after a header of any level the content restarts at indent 0.
 - Lists: the `- ` bullet, the top level at column 0, the nesting step 4 spaces (0, 4, 8), the depth at most 3; a leaf item ends with `;`, an item with children ends with `:`; one blank line before and after every (sub)list's positions, sibling leaf items run dense; numbered items only for step sequences; tabs are a violation.
-- Blank lines: exactly one between blocks, never two in a row; in a TTY the output is framed by one blank line first and last - in logs and pipes the frame is absent; the output ends with its last text line plus a single newline.
+- Blank lines: exactly one after every paragraph, message line or block, list, table and header - never two in a row; a relayed utility output passes through as-is, framed by one blank line before and after it; in a TTY the output is framed by one blank line first and last - in logs and pipes the frame is absent; the output ends with its last text line plus a single newline.
 - Line width 100 (or the terminal width when smaller); the wrap hangs +4 spaces; overlong paths truncate in the middle with `…`, the full form goes to verbose or machine mode.
 - Messages: a single sentence stays on the prefix line without a trailing period; a multi-sentence message goes into its own block - the prefix alone, one blank line, the text indented +4, one blank line after; gray `Hint:` lines follow the block.
 
