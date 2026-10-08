@@ -188,6 +188,26 @@
 
 - [Rule #2610031938 - Makefile: Vendoring the Framework](/standards/git-code-project-standard/rule-2610031938.md);
 
+## The Git Flow Standard
+
+### The ladder
+
+- [Rule #2610082114 - The Flow Ladder: Five Named Variants](/standards/git-flow-standard/rule-2610082114.md);
+
+### Common invariants
+
+- [Rule #2610082116 - The Fork Point: the Merge Request Target](/standards/git-flow-standard/rule-2610082116.md);
+- [Rule #2610082118 - Directions: the One-Way Flow and the Sync Discipline](/standards/git-flow-standard/rule-2610082118.md);
+- [Rule #2610082120 - Hotfix: Delivery via main, Propagation by Back-Merge](/standards/git-flow-standard/rule-2610082120.md);
+
+### Variants
+
+- [Rule #2610082122 - Variant #1: Trunk-Based Development](/standards/git-flow-standard/rule-2610082122.md);
+- [Rule #2610082124 - Variant #2: GitHub Flow](/standards/git-flow-standard/rule-2610082124.md);
+- [Rule #2610082126 - Variant #3: Git Flow Lite](/standards/git-flow-standard/rule-2610082126.md);
+- [Rule #2610082128 - Variant #4: GitLab Flow Lite](/standards/git-flow-standard/rule-2610082128.md);
+- [Rule #2610082130 - Variant #5: Git Flow](/standards/git-flow-standard/rule-2610082130.md);
+
 ## The Security Standard
 
 ### Sensitive data
