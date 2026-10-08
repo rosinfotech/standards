@@ -6,6 +6,20 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## [0.4.10] - 2026-10-08
+
+### Added
+
+- The Output CLI Standard (15 rules, `standards/output-cli-standard/`): streams (stdout for results, stderr for diagnostics) and exit codes 0 / 1 / 2; color gating by TTY / NO_COLOR / CLICOLOR with the fixed switch precedence; the closed semantic palette - header blues and white (94 / 97), fully colored messages, JSON syntax roles; marker heading levels (`==` / `--` / flat) chosen by the section weight with the content restarting at column 0; lists with the 4-space step and the `;` / `:` terminator discipline; the blank-line discipline with the TTY frame; line width 100 with the hanging wrap; message prefixes Error / Warning / Success / Information with the multi-sentence block layout; relative quoted paths as `path:line`; machine modes `--tsv` / `--json` with pretty JSON in a TTY and compact in pipes; single-line progress and numbered prompts; the approved library list per stack; the executable reference implementation lives in the standard's assets (output-cli-demo.js);
+
+- The CLI Engineer role (Rule #2610081414, the asset AGENTS-STANDARD-ENGINEER-CLI.md - isolated and self-contained, the norms inlined as plain text) and the CLI output contract binding any role that touches a CLI to the standard (Rule #2610081416);
+
+### Changed
+
+- The assets isolation norm (Rule #2609271055): assets carry no references to rules - the norms are inlined as plain text, the description lives in the rules;
+
+- The README index items now follow the list terminator grammar (`;` / `:`), the new standards and rules linked;
+
 ## [0.4.9] - 2026-10-05
 
 ### Added
