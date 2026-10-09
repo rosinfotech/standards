@@ -64,9 +64,9 @@
 
 ## The repository marker
 
-- A repository declares its variant by exactly one root marker file, committed - the five names are exhaustive: `.git-rosinfo-tech-trunk-based-development`, `.git-rosinfo-tech-github-flow`, `.git-rosinfo-tech-git-flow-lite`, `.git-rosinfo-tech-gitlab-flow-lite`, `.git-rosinfo-tech-git-flow`.
-- The marker content is two lines: `Flow: Variant #<N> - <Name>` and `Standard: https://github.com/rosinfotech/standards#the-git-flow-standard`.
-- More than one marker is a violation - detected by globbing `.git-rosinfo-tech-*` in the repository root.
+- A repository declares its variant by exactly one root marker file, committed - the five names are exhaustive: `.github-com-rosinfotech-trunk-based-development`, `.github-com-rosinfotech-github-flow`, `.github-com-rosinfotech-git-flow-lite`, `.github-com-rosinfotech-gitlab-flow-lite`, `.github-com-rosinfotech-git-flow`; the prefix mirrors the standard's URL origin: `github.com/rosinfotech` -> `github-com-rosinfotech`.
+- The marker content is the declaration, the standard link and the rules list: a `Flow:` line, a `Standard:` line, then `Rules:` followed by one URL per line - every rule of the standard that governs the variant, no others (the variant rule first, then the fork point, the directions and sync, the hotfix where applicable, then the versioning rules).
+- More than one marker is a violation - detected by globbing `.github-com-rosinfotech-*` in the repository root.
 - The marker is created when the variant is chosen and updated by the very commit that migrates to another variant.
 - During an audit I read the marker first and check the declared variant against the actual branch structure - a divergence is an audit finding; agents read the marker as the input and never guess the flow from the commit history.
 

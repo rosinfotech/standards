@@ -6,6 +6,16 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## [0.5.5] - 2026-10-09
+
+### Changed
+
+- The repository markers of the Git Flow Standard (Rule #2610092156) now carry the rules list: after the `Flow:` and `Standard:` lines a `Rules:` block lists one URL per line - every rule of the standard that governs the variant and no others; the applicability matrix is fixed in the rule - #1 three rules (the variant, the stamp truth, the stamp message), #2 four (plus fragments), #3 six (plus the fork point and the sync, no hotfix rule - no queue), #4 and #5 seven (plus the hotfix);
+
+- The assets norm (Rule #2609271055) gains the pointer asset exception: a file whose purpose is to declare and reference - not to carry norms (the flow markers) - carries the declaration and the URLs of the standard and its rules, inlines no norms; all other assets keep the purity rules; the Git Flow Expert asset syncs the marker content format;
+
+- The marker prefix renamed from `.git-rosinfo-tech-*` to `.github-com-rosinfotech-*` - the prefix mirrors the standard's URL origin (`github.com/rosinfotech` -> `github-com-rosinfotech`), the single-marker detection stays a single glob;
+
 ## [0.5.4] - 2026-10-09
 
 ### Added
