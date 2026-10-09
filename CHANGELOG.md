@@ -6,6 +6,12 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## [0.5.4] - 2026-10-09
+
+### Added
+
+- The repository marker for the Git Flow Standard (Rule #2610092156): a repository declares its variant by exactly one root marker file - the five names are exhaustive (`.git-rosinfo-tech-trunk-based-development`, `.git-rosinfo-tech-github-flow`, `.git-rosinfo-tech-git-flow-lite`, `.git-rosinfo-tech-gitlab-flow-lite`, `.git-rosinfo-tech-git-flow`, canonical github / gitlab spelling); the content is two lines - `Flow: Variant #<N> - <Name>` and the link to the standard; more than one marker is a violation detected by globbing `.git-rosinfo-tech-*`; the lifecycle - created at the variant choice, updated by the very migration commit, audited first against the actual branch structure; agents read the marker as the input and never guess the flow from the history; the five ready-to-copy marker assets live in the standard's assets; the Git Flow Expert asset and rule inline the marker norms; the README index links the rule in the new The repository marker subsection;
+
 ## [0.5.3] - 2026-10-09
 
 ### Added

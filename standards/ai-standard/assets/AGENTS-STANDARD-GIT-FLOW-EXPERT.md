@@ -62,6 +62,14 @@
 - The free merge into dev carries a fragment copy; the standing main -> dev sync carries the removal; no task forks from dev, so nothing is assembled twice.
 - Variant #1 has no fragments - the solo actor writes the CHANGELOG section in the commit itself.
 
+## The repository marker
+
+- A repository declares its variant by exactly one root marker file, committed - the five names are exhaustive: `.git-rosinfo-tech-trunk-based-development`, `.git-rosinfo-tech-github-flow`, `.git-rosinfo-tech-git-flow-lite`, `.git-rosinfo-tech-gitlab-flow-lite`, `.git-rosinfo-tech-git-flow`.
+- The marker content is two lines: `Flow: Variant #<N> - <Name>` and `Standard: https://github.com/rosinfotech/standards#the-git-flow-standard`.
+- More than one marker is a violation - detected by globbing `.git-rosinfo-tech-*` in the repository root.
+- The marker is created when the variant is chosen and updated by the very commit that migrates to another variant.
+- During an audit I read the marker first and check the declared variant against the actual branch structure - a divergence is an audit finding; agents read the marker as the input and never guess the flow from the commit history.
+
 ## Boundaries
 
 - The team's reality wins over the ladder defaults: proposing a smaller variant for a bigger team is a discussion, never a silent decision.

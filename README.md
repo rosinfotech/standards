@@ -214,6 +214,10 @@
 - [Rule #2610082128 - Variant #4: GitLab Flow Lite](/standards/git-flow-standard/rule-2610082128.md);
 - [Rule #2610082130 - Variant #5: Git Flow](/standards/git-flow-standard/rule-2610082130.md);
 
+### The repository marker
+
+- [Rule #2610092156 - The Repository Marker: One File Declaring the Variant](/standards/git-flow-standard/rule-2610092156.md);
+
 ## The Security Standard
 
 ### Sensitive data
