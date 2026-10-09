@@ -6,6 +6,14 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## [0.5.3] - 2026-10-09
+
+### Added
+
+- The versioning layer for the Git Flow Standard (3 rules): tags as the version truth - the last committed version is read as `git describe --tags --abbrev=0` on the main tip, never from .version or CHANGELOG.md (both become generated artifacts of the stamp; the makefile version-update flow migrates to reading tags); the stamp protocol at the last gate - rebase on the main tip, read the tag, compute the next semver, assemble, `git push --atomic` with the duplicate-tag rejection as the retry loop; the granularity map - version-per-merge for variants #1-#4, version-per-release for #5 (x.y.0 at the release merge, x.y.z+1 for hotfixes); the assembly location split - the stamp on main for #1-#3, the assembly commit in the gate branch for #4-#5 so main never sees raw fragments; changelog fragments - `changelog-fragments/<UTLBL>.<type>.md`, one line per task, consumed by the stamp, the dev copies carried by the merges and the standing sync; the stamp commit message `$NEXT: <Type>: <main message>` with merge commits carrying no version prefix;
+
+- The five variant rules gain their versioning sections, the Git Flow Expert asset and its rule (Rule #2610082250) inline the versioning norms and map the new rules; the README index links the Versioning subsection;
+
 ## [0.5.2] - 2026-10-08
 
 ### Changed

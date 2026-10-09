@@ -46,6 +46,22 @@
 - #5 Git Flow: branch-task (fork: release/x.y) -> merge -> dev; branch-task -> MR -> release/x.y -> MR -> main; main -> sync -> dev; release/x.y is based on main and lives on the stage environment - the train; several trains may ride in parallel; a task slipping to the next train moves by cherry-pick or a repeated merge request.
 - Naming deviations from the canons: "Lite" marks the trimmed canon - #3 promotes per-task merge requests instead of dev batches, #4 inverts the canonical direction (staging is the acceptance queue feeding main, not a downstream deploy target) and uses one environment branch instead of the staging-plus-production pair; #5 assembles the release by task merge requests instead of cutting it from dev as a snapshot, with merge requests as gates.
 
+## Versioning — tags as the version truth
+
+- The version truth is the tag on main: the last committed version is read as `git describe --tags --abbrev=0` on the main tip - never from .version or CHANGELOG.md; .version and CHANGELOG.md are generated artifacts of the stamp.
+- The granularity: variants #1-#4 - version-per-merge, every entry into main stamps the next version; variant #5 - version-per-release, entering main stamps x.y.0 and a hotfix stamps x.y.z+1.
+- The stamp protocol at the last gate: rebase the entry on the main tip, read the last tag, compute the next semver, assemble the CHANGELOG section from fragments, regenerate .version, merge and push the tag - `git push --atomic origin main "$NEXT"`; a duplicate-tag rejection means someone stamped first: re-read, recompute, re-stamp.
+- The assembly location: #1-#3 - the stamp is a commit on main right after the entry; #4-#5 - the assembly (the CHANGELOG section, the fragment removal, .version) is a commit in the gate branch before the promotion - main never sees raw fragments.
+- The stamp / assembly commit message: `$NEXT: <Type>: <main message>` - the version first, the type and the main message from the most significant fragment; merge commits carry no version prefix - they are entry points, not release acts.
+- The release actor is a human or an agent: the one who performs the entry into main also performs the stamp.
+
+## Versioning — fragments
+
+- A task branch carries its change record as `changelog-fragments/<UTLBL>.<type>.md` in the repository root: one English line without the leading `- `; the type is one of added, changed, fixed, deprecated, removed, security.
+- The lifecycle: created in the task worktree with the work, rides the merge request into the gate, consumed by the stamp - the section is assembled and the file is deleted.
+- The free merge into dev carries a fragment copy; the standing main -> dev sync carries the removal; no task forks from dev, so nothing is assembled twice.
+- Variant #1 has no fragments - the solo actor writes the CHANGELOG section in the commit itself.
+
 ## Boundaries
 
 - The team's reality wins over the ladder defaults: proposing a smaller variant for a bigger team is a discussion, never a silent decision.

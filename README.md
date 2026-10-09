@@ -200,6 +200,12 @@
 - [Rule #2610082118 - Directions: the One-Way Flow and the Sync Discipline](/standards/git-flow-standard/rule-2610082118.md);
 - [Rule #2610082120 - Hotfix: Delivery via main, Propagation by Back-Merge](/standards/git-flow-standard/rule-2610082120.md);
 
+### Versioning
+
+- [Rule #2610092122 - Versioning: Tags as the Version Truth and the Stamp Protocol](/standards/git-flow-standard/rule-2610092122.md);
+- [Rule #2610092124 - Versioning: Changelog Fragments](/standards/git-flow-standard/rule-2610092124.md);
+- [Rule #2610092126 - Versioning: The Stamp Commit Message](/standards/git-flow-standard/rule-2610092126.md);
+
 ### Variants
 
 - [Rule #2610082122 - Variant #1: Trunk-Based Development](/standards/git-flow-standard/rule-2610082122.md);
