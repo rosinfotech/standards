@@ -188,7 +188,7 @@
 
 - [Rule #2610031938 - Makefile: Vendoring the Framework](/standards/git-code-project-standard/rule-2610031938.md);
 
-## The Git Flow Standard
+## The Reviewed Merge to Release to Main Flow (Git Flow) Standard
 
 ### The ladder
 
@@ -208,11 +208,11 @@
 
 ### Variants
 
-- [Rule #2610082122 - Variant #1: Trunk-Based Development](/standards/git-flow-standard/rule-2610082122.md);
-- [Rule #2610082124 - Variant #2: GitHub Flow](/standards/git-flow-standard/rule-2610082124.md);
-- [Rule #2610082126 - Variant #3: Git Flow Lite](/standards/git-flow-standard/rule-2610082126.md);
-- [Rule #2610082128 - Variant #4: GitLab Flow Lite](/standards/git-flow-standard/rule-2610082128.md);
-- [Rule #2610082130 - Variant #5: Git Flow](/standards/git-flow-standard/rule-2610082130.md);
+- [Rule #2610082122 - Variant #1: Direct to Main Flow (Trunk-Based Development)](/standards/git-flow-standard/rule-2610082122.md);
+- [Rule #2610082124 - Variant #2: Free Merge to Main Flow (GitHub Flow)](/standards/git-flow-standard/rule-2610082124.md);
+- [Rule #2610082126 - Variant #3: Reviewed Merge to Main Flow (Git Flow Lite)](/standards/git-flow-standard/rule-2610082126.md);
+- [Rule #2610082128 - Variant #4: Reviewed Merge to Staging to Main Flow (GitLab Flow Lite)](/standards/git-flow-standard/rule-2610082128.md);
+- [Rule #2610082130 - Variant #5: Reviewed Merge to Release to Main Flow (Git Flow)](/standards/git-flow-standard/rule-2610082130.md);
 
 ### The repository marker
 
@@ -259,4 +259,4 @@
 - [Rule #2609271538 - Frontend Engineer AGENTS.md: TypeScript + React](/standards/ai-standard/rule-2609271538.md);
 - [Rule #2610081414 - CLI Engineer AGENTS.md: Command-Line Development](/standards/ai-standard/rule-2610081414.md);
 - [Rule #2610081416 - CLI Output Contract: Binding Any Role to the Output CLI Standard](/standards/ai-standard/rule-2610081416.md);
-- [Rule #2610082250 - Git Flow Expert AGENTS.md: Branching Model Stewardship](/standards/ai-standard/rule-2610082250.md);
+- [Rule #2610082250 - Reviewed Merge to Release to Main Flow (Git Flow) Expert AGENTS.md: Branching Model Stewardship](/standards/ai-standard/rule-2610082250.md);

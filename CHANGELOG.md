@@ -6,6 +6,26 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## [0.6.0] - 2026-10-11
+
+### Changed
+
+- The Git Flow Standard renamed to the Reviewed Merge to Release to Main Flow (Git Flow) Standard: the five variants now carry self-describing merge-path names - #1 Direct to Main Flow (Trunk-Based Development), #2 Free Merge to Main Flow (GitHub Flow), #3 Reviewed Merge to Main Flow (Git Flow Lite), #4 Reviewed Merge to Staging to Main Flow (GitLab Flow Lite), #5 Reviewed Merge to Release to Main Flow (Git Flow) - the canonical industry names stay in parentheses; the dev branch renamed to develop across the rules; the README index and the Git Flow Expert rule retitled accordingly;
+
+- The repository marker (Rule #2610092156): the published regulating file is `.git_flow/flow` - the content copied as-is from the variant's asset, the directory is the discovery point, the file is the declaration; the five marker assets renamed to the new variant names (`.github-com-rosinfotech-direct-to-main-flow` through `.github-com-rosinfotech-reviewed-merge-to-release-to-main-flow`);
+
+- The version truth (Rule #2610092122): the intended bump is declared in `.version` line 2 - a declared semver above the last tag is stamped as is (the bump granularity is the actor's choice), the steady state (line 2 equal to the last tag) means the default patch bump, a declaration below the tag-derived minimum is refused with an `Error`; the deferral for variants #1-#3 - every tagging is gated by a confirmation defaulting to deferral (a flag answers it for agents), the next confirmed stamp versions the accumulated work as one;
+
+- The changelog fragments moved from `changelog-fragments/` in the repository root to `.git_flow/changelog_fragments/<UTLBL>.<type>.md` (Rule #2610092124);
+
+### Added
+
+- The squash discipline of the entry into main (Rule #2610092126): a task lands as one commit - #2 the squash merge carries the senior fragment message, #3 the squashed merge request carries no version and the stamp commit that follows brings it, #4-#5 the promotion squash is titled `$NEXT: <Type>: <message>` so main receives one versioned commit and the stamp only lands the tag; the task branch commits follow `<Type>: <message>`; a tag never travels without its commit - one atomic push of the branch and the tag;
+
+- The Git Flow tooling vendored into the makefile framework: the `git_flow_*` make targets (init, status, stamp, prepare_release, task_start / task_finish / task_fragment / task_dev_merge, hotfix_start / hotfix_finish) backed by `flow_lib.sh` and `cli_lib.sh`; `version_get` resolves the next stamp from the tag floor and the `.version` intent (the Rule #2610092122 contract, the below-minimum refusal included); `version_show` reports the tag, the default floor, both `.version` lines and the resolved next stamp; `git_commit` and `git_commit_push` migrated to the CLI library output with the release gate, the deferral path and the atomic branch-and-tag push;
+
+- The Output CLI Standard prompt bypass through make (Rule #2610072056): a command wrapped in make delivers the bypass as an inline environment variable - `make <target> VAR=1` or `VAR=1 make <target>` - the exported variable is the flag's transport;
+
 ## [0.5.5] - 2026-10-09
 
 ### Changed
