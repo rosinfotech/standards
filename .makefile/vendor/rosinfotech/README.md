@@ -1,8 +1,8 @@
 # Vendored rosinfotech/makefile
 
 - Source:  git@github.com:rosinfotech/makefile.git
-- Commit:  e9d645d (2026-10-11)
-- Items:   25 (framework scripts, make wrapper, ai-skills)
+- Commit:  c33f75d (2026-10-17)
+- Items:   27 (framework scripts, make wrapper, ai-skills)
 
 Update:   git pull in a clone of the makefile repository, then
           make vendor "/Users/aeza/scopes/rosinfotech/standards"

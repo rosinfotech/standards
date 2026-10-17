@@ -2,7 +2,7 @@
 
 LIB_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-source "$LIB_DIR/flow_lib.sh"
+source "$LIB_DIR/lib_git_flow.sh"
 
 showVersion() {
     local tag floor line1 line2
@@ -19,6 +19,7 @@ showVersion() {
             "${line1:-?}" "${line2:-?}"
     fi
     printf -- '- next stamp resolves to: %s;\n' "$(getVersion)"
+    printf '\n'
 }
 
 cliFrameInit

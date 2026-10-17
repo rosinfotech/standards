@@ -1,9 +1,15 @@
 #!/bin/bash
 #
-# cli_lib.sh - the Output CLI Standard primitives (the rules #2610072030 -
+# lib_cli.sh - the Output CLI Standard primitives (the rules #2610072030 -
 # #2610072050): the stream split, the exit-code contract, the color gating
 # chain, the closed semantic palette, the marker headers and the message
 # prefixes. A library: sourced by the framework commands.
+#
+# Blank-line ownership (rule #2610072044): every header and every message
+# prefix (Error / Warning / Success / Information) prints its own trailing
+# blank line - call sites never add one after them. Hint lines are group
+# tails and carry no blank; a hint followed by more output needs an
+# explicit blank from the call site.
 
 cliColorGates() {
     local tty_state="$1"
@@ -33,6 +39,7 @@ cliHeader1() {
     else
         printf '== %s ==\n' "$1"
     fi
+    printf '\n'
 }
 
 cliHeader1Err() {
@@ -41,6 +48,7 @@ cliHeader1Err() {
     else
         printf '== %s ==\n' "$1" >&2
     fi
+    printf '\n' >&2
 }
 
 cliHeader2() {
@@ -49,6 +57,7 @@ cliHeader2() {
     else
         printf -- '-- %s --\n' "$1"
     fi
+    printf '\n'
 }
 
 cliHeader3() {
@@ -57,6 +66,7 @@ cliHeader3() {
     else
         printf -- '-- %s --\n' "$1"
     fi
+    printf '\n'
 }
 
 cliHeader3Err() {
@@ -65,6 +75,7 @@ cliHeader3Err() {
     else
         printf -- '-- %s --\n' "$1" >&2
     fi
+    printf '\n' >&2
 }
 
 cliHeader4() {
@@ -73,6 +84,7 @@ cliHeader4() {
     else
         printf '%s\n' "$1"
     fi
+    printf '\n'
 }
 
 cliError() {
@@ -81,6 +93,7 @@ cliError() {
     else
         printf 'Error: %s\n' "$*" >&2
     fi
+    printf '\n' >&2
 }
 
 cliWarning() {
@@ -89,6 +102,7 @@ cliWarning() {
     else
         printf 'Warning: %s\n' "$*" >&2
     fi
+    printf '\n' >&2
 }
 
 cliSuccess() {
@@ -97,6 +111,7 @@ cliSuccess() {
     else
         printf 'Success: %s\n' "$*"
     fi
+    printf '\n'
 }
 
 cliInfo() {
@@ -105,6 +120,7 @@ cliInfo() {
     else
         printf 'Information: %s\n' "$*"
     fi
+    printf '\n'
 }
 
 cliHint() {
@@ -128,7 +144,7 @@ cliFrameOpen() {
 }
 
 cliFrameClose() {
-    if [ -t 1 ]; then printf '\n'; fi
+    :
 }
 
 cliFrameInit() {

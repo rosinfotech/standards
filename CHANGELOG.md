@@ -6,6 +6,16 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## [0.6.1] - 2026-10-17
+
+### Changed
+
+- The stamp protocol moved to seal-on-main for variants #4-#5 (Rules #2610082128, #2610082130, #2610092122, #2610092124, #2610092126): the fragments ride the gate branches unconsumed into main with the promotion; the seal assembles the CHANGELOG section on main right after the entry, lands the stamp commit with the tag in one atomic push and syncs the gates - the promotion merge-request title carries no version (the version arrives with the stamp commit, the same rhythm as #3), and the deferral applies to all variants;
+- Rule #2610082130: the release train is singular in the tooling - the seal bumps the shipped train forward (release/x.y -> release/x.y+1); several manual trains remain an escape hatch, not the tooling path;
+- Rule #2610082118: a gate branch whose content is fully promoted may be reset to main instead of merged - the tooling resets such gates during the seal;
+- The variant, hotfix and stamp-protocol schemes redrawn in one style: the fragments ride the merge requests and the gates unconsumed, the seal is the process node on main (assemble, stamp, tag, gates sync, train bump), the fork bases are named in the task nodes;
+- The ai-standard git section aligned with the amended Git Flow Standard and the makefile framework (Rules #2609262030, #2609262035, #2610031647; assets AGENTS-STANDARD-GIT-FLOW-EXPERT.md, AGENTS-STANDARD-GIT-MANAGER.md): the skill references renamed to skill-makefile-git-flow-ready; the commit-preparation flow now phase-aware (fragment proposals under variants #2-#5, the .version/CHANGELOG edits permitted to the agent only under a declared variant #1 per the skill's conditions); the versioning command proposal covers make git_flow_seal after gate merges; the Git Flow Expert asset rewritten - the marker names and location (.git_flow/.git-flow-*), the fragment path (.git_flow/changelog_fragments/), the develop naming, the seal-on-main assembly, the deferral in all variants, the singular train, the full variant names.
+
 ## [0.6.0] - 2026-10-11
 
 ### Changed

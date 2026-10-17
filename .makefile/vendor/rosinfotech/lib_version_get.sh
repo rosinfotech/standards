@@ -2,7 +2,7 @@ isSemver() {
     echo "$1" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$'
 }
 
-CLI_LIB_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/cli_lib.sh"
+CLI_LIB_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib_cli.sh"
 [ -f "$CLI_LIB_PATH" ] && source "$CLI_LIB_PATH"
 
 bumpPatchVersion() {
@@ -78,8 +78,8 @@ getVersion() {
     fi
 
     if [ "$(semverCompare "$intent" "$floor")" -lt 0 ]; then
-        cliError "the .version declaration ${intent} is below the minimum ${floor} (the patch bump of the tag ${tag})"
-        cliHint "raise line 2 of .version"
+        cliError "The .version declaration ${intent} is below the minimum ${floor} (the patch bump of the tag ${tag})"
+        cliHint "Raise line 2 of .version."
         exit 1
     fi
 
