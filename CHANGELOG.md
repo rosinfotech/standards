@@ -6,6 +6,13 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## [0.7.0] - 2026-10-19
+
+### Added
+
+- Rule #2610191435: during commit preparation the agent assesses the documentation necessity - an ADR (`docs/adr/[lang_code]/*`) when the change embodies an architectural decision, a runbook (`docs/runbooks/[lang_code]/*`) when it introduces or alters an operational procedure; the degree of necessity at the agent's discretion (proposed with a one-line justification) or by a direct user instruction (drafted unconditionally); the naming, numbering, language and format follow the existing documents of the target directory, an empty or absent directory - the README language; the file edits are applied by the user, or by the agent on a separate explicit request;
+- Rule #2609262030 and the asset AGENTS-STANDARD-GIT-MANAGER.md reference the assessment duty in the commit-preparation flow;
+
 ## [0.6.1] - 2026-10-17
 
 ### Changed
