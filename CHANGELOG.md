@@ -6,6 +6,16 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## [0.8.0] - 2026-10-25
+
+### Added
+
+- The Make Commands standard (the asset AGENTS-STANDARD-MAKE-ARGS.md): every command target of the rosinfotech makefile framework - and every project command built on top of it - accepts user input through one channel only: `make <command> ["<one positional argument>"] [args="<flags>"]`; the positional slot carries at most one string (a message, a label, a version), passing two positional arguments is an error; flags travel only in the args make variable, long `--kebab-case` forms are canonical, `--yes` / `-y` the single short form; an unknown flag must fail with an error message and exit code 2 - silent ignoring is a violation; environment variables are not a command interface (the framework reads only industry signals - NO_COLOR, CLICOLOR, TERM, TTY detection - and its own internal transport); the framework flag dictionary fixed: `--yes` / `-y` auto-confirm, `--release` force the seal tag gate, `--defer` defer it, `--force` force git_flow_clear removal, `--redirected` internal to the seal -> commit_push bridge; consumer repositories follow the same contract with the fixed pass-through pattern `$(call resolve_script,<script>.sh) [<positional>] $(args)` - flags are never named in the Makefile, hints show the `args="..."` spelling, never an environment variable;
+
+### Changed
+
+- The vendored makefile framework updated to 0.4.0 (the source commit 076d1ab): the framework commands switched from the environment-variable transport (FLOW_YES, FLOW_RELEASE, FLOW_CLEAR) to the args contract - the new cliParseArgs parser (lib_cli.sh) implements the single input channel for the framework commands, every git_flow script receives the one positional and the flags through it, the Makefile recipes append `$(args)` to every script call, the seal -> commit_push bridge rides `--redirected` instead of the env var; git_flow_prepare_release removed with its make target and its status mentions (the seal handles everything); the preassembled deferral branch of the seal dropped - the deferral applies uniformly; the secrets library gains secretsBackup - a timestamped rotating backup of the secrets file next to the original (SECRETS_BACKUP_KEEP copies kept, 3 by default);
+
 ## [0.7.0] - 2026-10-19
 
 ### Added
