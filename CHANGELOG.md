@@ -6,6 +6,30 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## [0.9.0] - 2026-11-15
+
+### Changed
+
+- The Output CLI Standard redesigned end to end: everything prints to stdout and the redirected file mirrors the terminal without the color - the progress line stays transient and never reaches files; special messages moved to the `TYPE. Text` format: a period separator, a capital letter opening the text, the whole line in the semantic color, no trailing period (hints keep the `Hint. Text.` form with the trailing period); headings lost their `==` / `--` markers and bold - two plain colored levels; the palette is closed and role-based (Heading 1, Heading 2, Prompt, Information, Success, Warning, Error, Text, Hint) with the shades declared per terminal theme - dark: bright cyan (96), bright white (97), bright green (92), bright yellow (93), bright red (91), light gray (38;5;251), bright black (90); light: blue (38;5;25), black (30), dark green (38;5;28), amber (38;5;130), red (31), dark gray (38;5;239), gray (38;5;246); the color control is flags-only (`--color` / `--no-color` over the TTY baseline) - environment variables no longer participate;
+
+- The block discipline consolidated into one rule: exactly one blank separator line after every block including the last, none above, no doubles; every run opens with the leading frame blank and closes with the trailing separator, the machine modes carry no leading frame; tables normed as a block - the header row, the dash separator row spanning each column's widest cell, dense data rows; key phrases highlight in the Information color, inside a colored block the block color wins;
+
+- Lists: the golden terminators restored - `:` opens children, `;` closes a leaf - with one blank line after a parent line and after a closed children block, dense leaf siblings; the item casing follows its nature: a phrase opens capitalized, an abbreviation at an opening renders fully uppercase (TSV, JSON, ID, URL, API), a literal keeps its exact spelling;
+
+- Prompts: a confirmation is a single question line ending with `[Y/n]?` - an empty answer selects the default Y; a choice among many positions uses the numeric menu - the question line ends with the disclosure colon, the options indented +4 close with `;`, `Choose [N]:` carries the default; all prompt text renders in the prompt color; a non-TTY prompt refuses with an `Error.` message and exit code 2;
+
+- The machine modes (`--tsv`, `--json`) concretized: no color and no progress, everything else stays;
+
+- The CLI Engineer role asset rewritten self-contained: the norms inlined as plain text with the explicit palette declaration table - the demo is reproducible from the asset alone;
+
+### Removed
+
+- The redundant rules: #2610072038 (color-independent meaning - subsumed by the palette and the message format), #2610072040 (headers - folded into the block enumeration), #2610072046 (the 100-character line width - abolished);
+
+### Added
+
+- The executable reference implementation `assets/output-cli-demo.js`: the scenario runner (palette, headers, messages, paragraphs, lists, keys, prompts), the dark and light themes, the flag-driven color control, the palette declaration table;
+
 ## [0.8.0] - 2026-10-25
 
 ### Added

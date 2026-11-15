@@ -1,7 +1,7 @@
 # Vendored rosinfotech/makefile
 
 - Source:  git@github.com:rosinfotech/makefile.git
-- Commit:  076d1ab (2026-10-25)
+- Commit:  076d1ab (2026-11-15)
 - Items:   26 (framework scripts, make wrapper, ai-skills)
 
 Update:   git pull in a clone of the makefile repository, then

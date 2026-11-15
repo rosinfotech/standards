@@ -77,7 +77,7 @@ git_flow_task_merge_develop: init
 git_flow_task_start: init
 	$(call resolve_script,git_flow_task_start.sh) "$(filter-out $@,$(MAKECMDGOALS))" $(args)
 
-%:
+%::
 	@:
 
 # --- end vendored makefile framework ---

@@ -140,25 +140,22 @@
 
 ### Streams
 
-- [Rule #2610072030 - Streams: stdout for Results, stderr for Diagnostics](/standards/output-cli-standard/rule-2610072030.md);
+- [Rule #2610072030 - Streams: The File Mirrors the Terminal](/standards/output-cli-standard/rule-2610072030.md);
 - [Rule #2610072032 - Exit Codes: 0 / 1 / 2](/standards/output-cli-standard/rule-2610072032.md);
 
 ### Color
 
-- [Rule #2610072034 - Color: TTY and NO_COLOR Gating](/standards/output-cli-standard/rule-2610072034.md);
+- [Rule #2610072034 - Color: TTY Baseline and --color / --no-color Flags](/standards/output-cli-standard/rule-2610072034.md);
 - [Rule #2610072036 - Color: Semantic Palette](/standards/output-cli-standard/rule-2610072036.md);
-- [Rule #2610072038 - Color: Never Meaning by Color Alone](/standards/output-cli-standard/rule-2610072038.md);
 
 ### Typography
 
-- [Rule #2610072040 - Headers: Marker Levels, Blue and White](/standards/output-cli-standard/rule-2610072040.md);
 - [Rule #2610072042 - Lists: Dash Bullet, 4-Space Step, Terminators](/standards/output-cli-standard/rule-2610072042.md);
-- [Rule #2610072044 - Blank Lines: Paragraph and Block Discipline, TTY Frame](/standards/output-cli-standard/rule-2610072044.md);
-- [Rule #2610072046 - Line Width: 100 with Hanging Wrap](/standards/output-cli-standard/rule-2610072046.md);
+- [Rule #2610072044 - Blocks: Types and the Common Separator Discipline](/standards/output-cli-standard/rule-2610072044.md);
 
 ### Messages
 
-- [Rule #2610072048 - Message Prefixes: Error / Warning / Success / Information](/standards/output-cli-standard/rule-2610072048.md);
+- [Rule #2610072048 - Messages: The TYPE. Text Format](/standards/output-cli-standard/rule-2610072048.md);
 - [Rule #2610072050 - Paths: Relative, Quoted, path:line](/standards/output-cli-standard/rule-2610072050.md);
 
 ### Machine output
@@ -167,7 +164,7 @@
 
 ### Interaction
 
-- [Rule #2610072054 - Progress: Single stderr Line with Final State](/standards/output-cli-standard/rule-2610072054.md);
+- [Rule #2610072054 - Progress: One Transient Line with the Final Verdict](/standards/output-cli-standard/rule-2610072054.md);
 - [Rule #2610072056 - Prompts: Question Line + Option Lines](/standards/output-cli-standard/rule-2610072056.md);
 
 ### Tooling

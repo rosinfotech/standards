@@ -9,7 +9,7 @@
 
 - The npm scripts / Makefile of the repository are the single source of commands - read them first, never invent commands.
 - The argument-parsing and output library comes from the repository dependencies; when absent I propose a variant and wait for an explicit order before adding the dependency.
-- Color and formatting go through the approved library of the stack - raw ANSI sequences in application code are a violation.
+- Color and formatting go only through the approved library of the stack - TypeScript / NodeJS: picocolor; Go: fatih/color; Java: JANSI. Raw ANSI escape sequences in application code are a violation.
 
 ## Interface design
 
@@ -21,46 +21,78 @@
 
 ## Output discipline — streams and codes
 
-- The result goes to stdout; progress, logs, warnings and errors go to stderr - `cli > file` keeps a clean result.
-- Exit codes: 0 - success (an empty result is success, not an error), 1 - runtime failure, 2 - usage error.
-- Colors respect the consumer: color only when the target stream is a TTY; the switch order is CLICOLOR_FORCE, then NO_COLOR, then CLICOLOR=0, then TERM=dumb, then the TTY state; the flags --no-color / --color override the environment.
+- Everything the CLI prints - the result, special messages, hints, prompt refusals - goes to stdout; the redirected file tells the same story as the terminal, only without the color.
+- The single transient exception is the progress line: redrawn and erased, suppressed entirely in a non-TTY stream - it never reaches a file.
+- The machine verdict travels in the exit code: 0 - success (an empty result is success, not an error), 1 - runtime failure, 2 - usage error.
+
+## Output discipline — color
+
+- The automatic baseline: color is emitted only when the target stream is a TTY.
+- The only overrides are the flags: `--color` forces the color on even into a pipe, `--no-color` forces it off; environment variables do not participate.
 
 ## Output discipline — palette
 
-- The palette is closed - each color carries exactly one semantic role:
-  - headers: level 1 `== H ==` and level 2 `-- H --` - bold + blue; level 3 `-- H --` - blue without bold; level 4 flat text - bold + white.
-  - messages: Error - red, Warning - yellow, Success - green, Information - cyan; the prefix is bold, the text carries the color without bold.
-  - neutral output: cyan - paths and links; gray - hints, timestamps, secondary text.
-  - JSON in a TTY: keys - cyan, strings - green, numbers and literals - yellow, punctuation - the default color.
-- Blue is bright blue, white is bright white - the basic ANSI shades are unreadable on dark terminals.
-- Meaning never rides on color alone: markers and word prefixes survive NO_COLOR.
-- Forbidden: blinking, inverse video, background fills, rainbow runs, color as decoration.
+- The palette is closed - nothing outside the declaration below is ever emitted; nothing prints in bold.
+- The declaration (the name and, in brackets, the SGR parameter string the CLI emits):
 
-## Output discipline — typography
+  ```text
+  Role         Dark                    Light
+  -----------  ----------------------  ----------------------
+  Heading 1    Bright cyan (96)        Blue (38;5;25)
+  Heading 2    Bright white (97)       Black (30)
+  Prompt       Bright cyan (96)        Blue (38;5;25)
+  Information  Bright cyan (96)        Blue (38;5;25)
+  Success      Bright green (92)       Dark green (38;5;28)
+  Warning      Bright yellow (93)      Amber (38;5;130)
+  Error        Bright red (91)         Red (31)
+  Text         Light gray (38;5;251)   Dark gray (38;5;239)
+  Hint         Bright black (90)       Gray (38;5;246)
+  ```
 
-- Headers stand at column 0; the level is chosen by the weight of the section - starting from level 1 is not required; exactly one blank line follows every header; after a header of any level the content restarts at indent 0.
-- Lists: the `- ` bullet, the top level at column 0, the nesting step 4 spaces (0, 4, 8), the depth at most 3; a leaf item ends with `;`, an item with children ends with `:`; one blank line before and after every (sub)list's positions, sibling leaf items run dense; numbered items only for step sequences; tabs are a violation.
-- Blank lines: exactly one after every paragraph, message line or block, list, table and header - never two in a row; a relayed utility output passes through as-is, framed by one blank line before and after it; in a TTY the output is framed by one blank line first and last - in logs and pipes the frame is absent; the output ends with its last text line plus a single newline.
-- Line width 100 (or the terminal width when smaller); the wrap hangs +4 spaces; overlong paths truncate in the middle with `…`, the full form goes to verbose or machine mode.
-- Messages: a single sentence stays on the prefix line without a trailing period; a multi-sentence message goes into its own block - the prefix alone, one blank line, the text indented +4, one blank line after; gray `Hint:` lines follow the block.
+- The theme follows the terminal background: the Dark column on a dark terminal, the Light column on a light one.
+- Key phrases inside a block highlight in the Information color; inside a colored block the block color wins.
+
+## Output discipline — blocks
+
+- The block types: heading, special message and hint, paragraph, prompt, list, table.
+- A heading is a plain colored line - two levels, no markers, no bold; the level is chosen by the weight of the section.
+- A paragraph: the sentences flow inline, each opens with a capital letter, periods separate them, the trailing period stays.
+- A table: the header row, then the separator row of dashes - each column's dashes span the widest cell of that column - then dense data rows.
+- Exactly one blank separator line follows every block - including the last block of the output; no block receives a separator above itself; two blank lines in a row are a violation.
+- Every run opens with one blank line before its first output and closes with the trailing separator; the machine modes (`--tsv`, `--json`) carry no leading frame.
+
+## Output discipline — messages
+
+- The prefix set is closed: Error, Warning, Success, Information.
+- The format is `TYPE. Text`: a period separator, the text opens with a capital letter, the whole line carries the semantic color, the message drops the trailing period.
+- Hints: `Hint. Text` lines in the hint color; the sentences flow inline and keep the trailing period.
+- Messages are in English; emoji and symbol markers instead of the prefix are a violation.
+
+## Output discipline — lists
+
+- The dash bullet `- ` and numbered items `1. `; the nesting step is 4 spaces, the depth is at most 3 levels.
+- The terminator discipline: an item with children ends with `:`; a leaf ends with `;`.
+- A parent line takes a blank line after it before its children; a closed children block takes a blank line before the next sibling; leaf siblings run dense.
+- The casing follows the nature: a phrase opens with a capital letter; an abbreviation at an opening renders fully uppercase (TSV, JSON, ID, URL, API); a literal - a command, a flag, a path - keeps its exact spelling.
+- Lists render in the text color.
 
 ## Output discipline — paths and machine modes
 
-- Paths are relative to the repository root, quoted when they contain spaces, code references as `path/file.ts:26`; absolute local paths are a violation.
-- Machine output by explicit flags: --tsv (the default machine format) or --json; machine mode is plain - no color, no progress, no headers or hints on stdout, exactly one trailing newline.
-- JSON: pretty with a 4-space indent in a TTY, one compact line in pipes and files; one stable schema, changes are additive only.
+- Paths are relative to the repository root, quoted when they contain spaces; code references use the `path/file.ts:26` form; absolute local paths are a violation.
+- Machine output is enabled by the explicit flags: `--tsv` - the default machine format, `--json` - pretty in a TTY, compact in a pipe; the schema is stable and additive.
+- Machine mode implies no color and no progress; everything else stays.
 
 ## Output discipline — interaction
 
-- Progress: one line on stderr redrawn with `\r`, replaced on completion by the final `Success:` / `Error:` verdict; in a non-TTY the progress is suppressed, the verdict is still printed.
-- Prompts: a question line, numbered options indented +4, the default in square brackets (`Choose [1]:`); an empty answer picks the default; in a non-TTY the prompt is refused with an Error and exit code 2; --yes / --force flags bypass the prompts.
+- A confirmation is a single question line ending with `[Y/n]?` - an empty answer selects the default Y.
+- A choice among many positions uses a numeric menu: the question line ends with the disclosure colon `:`, the numbered options indented +4 close with `;`, the choice line `Choose [N]:` carries the default.
+- All prompt text renders in the prompt color; a prompt in a non-TTY stream is refused with an `Error.` message and exit code 2; `--yes` / `--force` bypass the prompts.
+- Progress occupies one transient line, replaced on completion by the final verdict message.
 
 ## Verification
 
-- Every output change runs in both modes before I report completion: an interactive TTY run and a piped or NO_COLOR run.
-- Machine modes are verified with real consumers: `cli list --tsv | column -t`, `cli list --json | jq .`.
-- Exit codes are asserted in tests.
-- Output snapshots capture the plain-text non-TTY form - the colored TTY form is not snapshot-stable.
+- Every output change runs in both modes before I report completion: an interactive TTY run and a piped run.
+- Exit codes are asserted in tests; machine modes are verified with real consumers - `cli list --tsv | column -t`, `cli list --json | jq`.
 
 ## Boundaries
 
