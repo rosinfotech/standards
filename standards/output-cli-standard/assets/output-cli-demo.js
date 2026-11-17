@@ -112,7 +112,8 @@ function painter(stream, themeName) {
         key: (text) => p.cyan(text),
         message: (type, text) => {
             const role = MESSAGE_ROLES[type];
-            return p[role](`${type}. ${capitalize(text)}`);
+            const body = capitalize(text);
+            return type === "Information" ? p[role](body) : p[role](`${type}. ${body}`);
         },
         prompt: (text) => p.cyan(text),
         red: wrap(codes.red),

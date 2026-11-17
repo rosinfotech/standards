@@ -6,6 +6,14 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## [0.10.0] - 2026-11-17
+
+### Changed
+
+- The Information message lost its `Information.` prefix: the text alone carries the Information color - a leading `Information.` is a violation; the prefix set is closed to `Error`, `Warning`, `Success` (Rule #2610072048; the example of Rule #2610072032; the asset AGENTS-STANDARD-ENGINEER-CLI.md; the demo assets/output-cli-demo.js);
+
+- One heading form per level within the output of one command: every level-1 heading carries the Heading 1 shade, every level-2 heading carries the Heading 2 shade - one level rendered in two forms within one output is a violation (Rule #2610072044; the asset AGENTS-STANDARD-ENGINEER-CLI.md);
+
 ## [0.9.0] - 2026-11-15
 
 ### Changed

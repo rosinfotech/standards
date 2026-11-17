@@ -56,6 +56,7 @@
 
 - The block types: heading, special message and hint, paragraph, prompt, list, table.
 - A heading is a plain colored line - two levels, no markers, no bold; the level is chosen by the weight of the section.
+- One heading form per level within one command output: level 1 always the Heading 1 shade, level 2 always the Heading 2 shade - one level in two forms within one output is a violation.
 - A paragraph: the sentences flow inline, each opens with a capital letter, periods separate them, the trailing period stays.
 - A table: the header row, then the separator row of dashes - each column's dashes span the widest cell of that column - then dense data rows.
 - Exactly one blank separator line follows every block - including the last block of the output; no block receives a separator above itself; two blank lines in a row are a violation.
@@ -63,8 +64,9 @@
 
 ## Output discipline — messages
 
-- The prefix set is closed: Error, Warning, Success, Information.
+- The prefix set is closed: Error, Warning, Success.
 - The format is `TYPE. Text`: a period separator, the text opens with a capital letter, the whole line carries the semantic color, the message drops the trailing period.
+- Information carries no prefix: the text alone in the Information color; a leading `Information.` is a violation.
 - Hints: `Hint. Text` lines in the hint color; the sentences flow inline and keep the trailing period.
 - Messages are in English; emoji and symbol markers instead of the prefix are a violation.
 
