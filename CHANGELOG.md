@@ -6,6 +6,12 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## [0.11.0] - 2026-11-21
+
+### Changed
+
+- The heading hierarchy fixed (Rule #2610072044; the asset AGENTS-STANDARD-ENGINEER-CLI.md): the position in the hierarchy assigns the level, not the visual weight of the section - level 1 marks the global sections of the command output, level 2 marks the subsections of a global section; the hierarchy starts at level 1: a level-2 heading without a level-1 parent in the same output is a violation - the output never opens at level 2; the hierarchy belongs to one command output - the levels are not inherited from a parent command, a wrapper or a previous run; the "starting from level 1 is not required" freedom is abolished; the incorrect/correct example added (Case #4);
+
 ## [0.10.0] - 2026-11-17
 
 ### Changed

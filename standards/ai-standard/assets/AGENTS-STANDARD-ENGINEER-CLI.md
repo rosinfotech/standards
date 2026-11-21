@@ -55,7 +55,8 @@
 ## Output discipline — blocks
 
 - The block types: heading, special message and hint, paragraph, prompt, list, table.
-- A heading is a plain colored line - two levels, no markers, no bold; the level is chosen by the weight of the section.
+- A heading is a plain colored line - two levels, no markers, no bold; the position in the hierarchy assigns the level: level 1 marks the global sections of the command output, level 2 marks the subsections of a global section.
+- The hierarchy starts at level 1 and belongs to one command output: a level-2 heading without a level-1 parent in the same output is a violation; the levels are not inherited from a parent command, a wrapper or a previous run.
 - One heading form per level within one command output: level 1 always the Heading 1 shade, level 2 always the Heading 2 shade - one level in two forms within one output is a violation.
 - A paragraph: the sentences flow inline, each opens with a capital letter, periods separate them, the trailing period stays.
 - A table: the header row, then the separator row of dashes - each column's dashes span the widest cell of that column - then dense data rows.
